@@ -23,7 +23,11 @@ router.get("/test", (req, res) => {
 // ✅ Register a New User
 router.post("/auth/register", (req, res) => {
     const { username, password } = req.body;
-    if (!username || !password) return res.status(400).json({ error: "Missing username or password" });
+    
+    // Ensure request body is correctly formatted
+    if (!username || !password) {
+        return res.status(400).json({ error: "Missing username or password" });
+    }
 
     // Check if user exists
     if (users.find(user => user.username === username)) {
@@ -39,9 +43,12 @@ router.post("/auth/register", (req, res) => {
 // ✅ Login a User
 router.post("/auth/login", (req, res) => {
     const { username, password } = req.body;
+    
     const user = users.find(u => u.username === username && u.password === password);
 
-    if (!user) return res.status(400).json({ error: "Invalid credentials" });
+    if (!user) {
+        return res.status(400).json({ error: "Invalid credentials" });
+    }
 
     res.json({ message: "Login successful", user });
 });
