@@ -18,7 +18,7 @@ if (!MONGO_URI) {
 }
 
 // ✅ Connect to MongoDB
-mongoose.connect(MONGO_URI, {
+mongoose.connect("mongodb+srv://BigBrosAdmin:Jayline1993@bigbrosbets.9uv9v.mongodb.net/?retryWrites=true&w=majority&appName=BigBrosBets", {
     useNewUrlParser: true,
     useUnifiedTopology: true
 })
